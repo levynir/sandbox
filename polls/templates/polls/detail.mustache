@@ -1,0 +1,11 @@
+this is a mustache template
+<h1>{{ poll.question }}</h1>
+{{#error_message}}<p><strong>{{ error_message }}</strong></p>{{/error_message}}
+url: 
+<form action="{{#url}}polls:vote,{{poll.id}}{{/url}}" method="post">
+<input type="hidden" name="csrfmiddlewaretoken" value="{{csrf_token.csrf_token}}"/>
+{{#poll.choice_set.all}}
+	{{>box}}
+{{/poll.choice_set.all}}
+<input type="submit" value="Vote" />
+</form>
